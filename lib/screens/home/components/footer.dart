@@ -16,7 +16,7 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: kPrimaryColor,
+      color: Colors.black,
       child: Container(
         padding: EdgeInsets.all(kPadding),
         constraints: BoxConstraints(maxWidth: kMaxWidth),
@@ -29,46 +29,17 @@ class Footer extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        "Foodie",
+                        "©sargam 2022",
                         style: TextStyle(
-                            fontSize: 25.0,
+                            fontSize: 15.0,
                             fontWeight: FontWeight.w900,
-                            color: kSecondaryColor),
+                            color: kPrimaryColor),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SocialIcon(
-                            icon: "assets/icons/google-icon.svg",
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          SocialIcon(
-                            icon: "assets/icons/facebook-2.svg",
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          SocialIcon(
-                            icon: "assets/icons/twitter.svg",
-                          ),
-                        ],
-                      )
                     ],
                   ),
                 ),
-                if (Responsive.isDesktop(context))
-                  Expanded(flex: 3, child: HeaderWebMenu()),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
-            if (!Responsive.isDesktop(context)) MobFooterMenu(),
           ],
         ),
       ),

@@ -13,36 +13,19 @@ class HeaderWebMenu extends StatelessWidget {
       children: [
         HeaderMenu(
           press: () {},
-          title: "Menu",
+          title: "Events",
         ),
         SizedBox(
           width: kPadding,
         ),
         HeaderMenu(
           press: () {},
-          title: "For Riders",
+          title: "Point Table",
         ),
         SizedBox(
           width: kPadding,
         ),
-        HeaderMenu(
-          press: () {},
-          title: "About",
-        ),
-        SizedBox(
-          width: kPadding,
-        ),
-        HeaderMenu(
-          press: () {},
-          title: "Reviews",
-        ),
-        SizedBox(
-          width: kPadding,
-        ),
-        HeaderMenu(
-          press: () {},
-          title: "Restaurants",
-        ),
+       
       ],
     );
   }
@@ -59,36 +42,19 @@ class MobFooterMenu extends StatelessWidget {
       children: [
         HeaderMenu(
           press: () {},
-          title: "Menu",
+          title: "Events",
         ),
         SizedBox(
           width: kPadding,
         ),
         HeaderMenu(
           press: () {},
-          title: "For Riders",
+          title: "Point Table",
         ),
         SizedBox(
           width: kPadding,
         ),
-        HeaderMenu(
-          press: () {},
-          title: "About",
-        ),
-        SizedBox(
-          width: kPadding,
-        ),
-        HeaderMenu(
-          press: () {},
-          title: "Reviews",
-        ),
-        SizedBox(
-          width: kPadding,
-        ),
-        HeaderMenu(
-          press: () {},
-          title: "Restaurants",
-        ),
+       
       ],
     );
   }
@@ -109,7 +75,7 @@ class HeaderMenu extends StatelessWidget {
       child: Container(
         child: Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Color.fromARGB(255, 4, 48, 85)),
         ),
       ),
     );

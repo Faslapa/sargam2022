@@ -20,30 +20,41 @@ class Products extends StatelessWidget {
       child: InkWell(
         onTap: press,
         child: Material(
+          color: Color.fromARGB(255, 244, 237, 237),
           elevation: 5,
           borderRadius: BorderRadius.circular(15),
           child: Container(
             padding: EdgeInsets.all(5.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: Image.asset(
-                    product.image,
+                    product.image, fit: BoxFit.fill,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                AutoSizeText(
-                  product.title,
-                  maxLines: 2,
-                  minFontSize: 14,
-                  style: TextStyle(
-                    fontSize: 15,
+                
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: AutoSizeText(
+                    
+                    product.title,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    minFontSize: 12,
+                    style: TextStyle(
+                      fontSize: 25, color:Color.fromARGB(226, 3, 2, 48),fontWeight: FontWeight.bold
+                    ),
+                    
+                    
+                    
+                  
                   ),
-                )
+                ),
+              
               ],
+              
             ),
           ),
         ),

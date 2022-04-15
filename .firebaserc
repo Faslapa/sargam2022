@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sargam-a6378"
+  },
+  "targets": {
+    "sargam-a6378": {
+      "hosting": {
+        "main": [
+          "sargam2022"
+        ]
+      }
+    }
+  }
+}
