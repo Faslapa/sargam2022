@@ -15,7 +15,7 @@ class HeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    decoration:  BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/sargam_logo.png'),fit: BoxFit.cover),borderRadius: BorderRadius.circular(15)),
+    decoration:  BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/sargam_logo.png'),fit: BoxFit.cover)),
     
       width: MediaQuery.of(context).size.width,
      

@@ -23,31 +23,37 @@ class BodyContainer extends StatelessWidget {
             Text(
               'SOLO EVENTS',
               style: TextStyle(
-                  fontSize: 40.0,
+                  fontSize: 25.0,
                   fontWeight: FontWeight.w900,
                   color: Colors.blue),
             ),
             Soloevents(
+              icon: Icons.menu_book_rounded,
               title: 'General Literary Events',
               productlist: literaryevents,
             ),
             Soloevents(
-              productlist: musicevents,
-              title: 'Music Events',
-            ),
-            Soloevents(
+              icon: Icons.menu_book_rounded,
               productlist: newlaunchevents,
               title: 'Sargam 2022 Newly Launched',
             ),
             Soloevents(
+              icon: Icons.music_note_outlined,
+              productlist: musicevents,
+              title: 'Music Events',
+            ),
+            Soloevents(
+              icon: Icons.theaters,
               productlist: theatreevents,
               title: 'Theatre Events',
             ),
             Soloevents(
+              icon: Icons.palette,
               productlist: fineartsevents,
               title: 'Fine Arts Events',
             ),
             Soloevents(
+              icon: Icons.emoji_people,
               productlist: danceevents,
               title: 'Dance Events',
             ),
@@ -57,14 +63,22 @@ class BodyContainer extends StatelessWidget {
             Text(
               'GROUP EVENTS',
               style: TextStyle(
-                  fontSize: 30.0,
+                  fontSize: 25.0,
                   fontWeight: FontWeight.w900,
                   color: Colors.blue),
             ),
-            GroupEvents(productlist: groupMusicEvents, title: 'Music Events'),
-            GroupEvents(productlist: groupDanceEvents, title: 'Dance Events'),
             GroupEvents(
-                productlist: theatregroupevents, title: 'Theatre Events')
+                icon: Icons.music_note,
+                productlist: groupMusicEvents,
+                title: 'Music Events'),
+            GroupEvents(
+                icon: Icons.emoji_people,
+                productlist: groupDanceEvents,
+                title: 'Dance Events'),
+            GroupEvents(
+                icon: Icons.theaters,
+                productlist: theatregroupevents,
+                title: 'Theatre Events')
           ],
         ));
   }

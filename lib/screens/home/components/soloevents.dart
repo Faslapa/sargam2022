@@ -10,55 +10,69 @@ import '../../../model.dart/responsive.dart';
 class Soloevents extends StatelessWidget {
   final List<Product> productlist;
   final String title;
-  const Soloevents({ Key? key, required this.productlist, required this.title }) : super(key: key);
+  final IconData icon;
+  const Soloevents(
+      {Key? key,
+      required this.productlist,
+      required this.title,
+      required this.icon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
     return Column(
-        children: [
-          SizedBox(
-            height: 40,
+      children: [
+        SizedBox(
+          height: 40,
+        ),
+        Text(
+          title,
+          style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w900,
+              color: kSecondaryColor),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        //now we create model of our product images
+        // we are using gridview inside column and scrollview widget thats why we are facing error
+        // use shrinkwrap and ScrollPhysics widget
+        Responsive(
+          desktop: ProductCard(
+            icon: icon,
+            productlist: productlist,
+            crossAxiscount: _size.width < 650 ? 2 : 3,
+            aspectRatio: _size.width < 650 ? 0.85 : 1,
           ),
-           Text(
-            title,
-            style: TextStyle(
-                fontSize: 25.0,
-                fontWeight: FontWeight.w900,
-                color: kSecondaryColor),
+          tablet: ProductCard(
+            icon: icon,
+            productlist: productlist,
+            crossAxiscount: _size.width < 825 ? 2 : 3,
+            aspectRatio: _size.width < 825 ? 0.85 : 1,
           ),
-          SizedBox(
-            height: 10,
+          mobile: ProductCard(
+            icon: icon,
+            productlist: productlist,
+            crossAxiscount: _size.width < 690 ? 2 : 3,
+            aspectRatio: _size.width < 560 ? 0.85 : 1,
           ),
-          //now we create model of our product images
-          // we are using gridview inside column and scrollview widget thats why we are facing error
-          // use shrinkwrap and ScrollPhysics widget
-          Responsive(
-            desktop: ProductCard(productlist: productlist,
-              crossAxiscount: _size.width < 650 ? 2 : 3,
-              aspectRatio: _size.width < 650 ? 0.85 : 1,
-            ),
-            tablet: ProductCard( productlist: productlist,
-              crossAxiscount: _size.width < 825 ? 2 : 3,
-              aspectRatio: _size.width < 825 ? 0.85 : 1,
-            ),
-            mobile: ProductCard(productlist: productlist,
-              crossAxiscount: _size.width < 690 ? 2 : 3,
-              aspectRatio: _size.width < 560 ? 0.85 : 1,
-            ),
-          ),
-        ],
-      );
-    
+        ),
+      ],
+    );
   }
 }
 
 class ProductCard extends StatelessWidget {
   final List<Product> productlist;
+  final IconData icon;
   ProductCard({
     Key? key,
     this.crossAxiscount = 3,
-    this.aspectRatio = 1.1, required this.productlist,
+    this.aspectRatio = 1.1,
+    required this.productlist,
+    required this.icon,
   }) : super(key: key);
   final int crossAxiscount;
   final double aspectRatio;
@@ -73,6 +87,7 @@ class ProductCard extends StatelessWidget {
         childAspectRatio: aspectRatio,
       ),
       itemBuilder: (context, index) => Products(
+        icon: icon,
         press: () async {
           _showMyDialog(context: context, product: productlist[index]);
         },
@@ -82,8 +97,6 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-
-
 
 Future<void> _showMyDialog(
     {required BuildContext context, required Product product}) async {
@@ -97,14 +110,14 @@ Future<void> _showMyDialog(
       final TextEditingController _emailController = TextEditingController();
       final TextEditingController _trvidcontroller = TextEditingController();
       final TextEditingController _phonecontroller = TextEditingController();
-     
+
       bool isProcessing = false;
       String? dept = null;
       String? sem = null;
       Widget progressIndicator = Center(child: CircularProgressIndicator());
       Widget submittedSuccessfully = Center(
         child: Column(
-          children:const [
+          children: const [
             Icon(
               Icons.done,
               color: Colors.green,
@@ -115,15 +128,25 @@ Future<void> _showMyDialog(
         ),
       );
       Widget registeredThree = Column(
-          children:const [
-            Icon(
-              Icons.close,
-              color: Colors.red,
-              size: 40,
-            ),
-            Text('Already registered for 3 events'),
-          ],
-        );
+        children: const [
+          Icon(
+            Icons.close,
+            color: Colors.red,
+            size: 40,
+          ),
+          Text('Already registered for 3 events'),
+        ],
+      );
+      Widget errormsg = Column(
+        children: const [
+          Icon(
+            Icons.close,
+            color: Colors.red,
+            size: 40,
+          ),
+          Text('Something Went Wrong'),
+        ],
+      );
       Widget indicator = progressIndicator;
       return Form(
         key: _formKey,
@@ -133,8 +156,8 @@ Future<void> _showMyDialog(
             title: Text(
               product.title,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
             content: SingleChildScrollView(
               child: isProcessing
@@ -146,15 +169,6 @@ Future<void> _showMyDialog(
                         CustomTextField(
                             title: 'Class Roll Number',
                             controller: _emailController),
-                        CustomTextField(
-                            title: 'KTU Registration ID',
-                            controller: _trvidcontroller),
-                        CustomTextField(
-                          title: 'Phone Number',
-                          controller: _phonecontroller,
-                          keyboardType: TextInputType.phone,
-                        ),
-                        const SizedBox(height: 4),
                         Text(
                           'Department',
                           style: Theme.of(context)
@@ -165,7 +179,12 @@ Future<void> _showMyDialog(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500),
                         ),
+                        SizedBox(
+                          height: 8,
+                        ),
                         DropdownButtonFormField(
+                            decoration: InputDecoration(
+                                isDense: true, border: OutlineInputBorder()),
                             validator: (value) {
                               if (value == null) {
                                 return 'This Field is Mandatory';
@@ -174,7 +193,17 @@ Future<void> _showMyDialog(
                             },
                             value: dept,
                             icon: Icon(Icons.arrow_drop_down),
-                            items: <String>['ECE', 'EEE', 'ME', 'CE', 'IT']
+                            items: <String>[
+                              'ECE',
+                              'EEE',
+                              'ME',
+                              'CE',
+                              'IT',
+                              'M.Tech ECE',
+                              'M.Tech IT',
+                              'M.Tech ME',
+                              'M.Tech EEE'
+                            ]
                                 .map<DropdownMenuItem<String>>(
                                     (String value) => DropdownMenuItem(
                                           child: Text(value),
@@ -184,7 +213,7 @@ Future<void> _showMyDialog(
                             onChanged: (String? newvalue) {
                               setState(() => dept = newvalue);
                             }),
-                        SizedBox(height: 4),
+                        SizedBox(height: 14),
                         Text(
                           'Semester',
                           style: Theme.of(context)
@@ -195,7 +224,12 @@ Future<void> _showMyDialog(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500),
                         ),
+                        SizedBox(
+                          height: 8,
+                        ),
                         DropdownButtonFormField(
+                            decoration: InputDecoration(
+                                isDense: true, border: OutlineInputBorder()),
                             validator: (value) {
                               if (value == null) {
                                 return 'This Field is Mandatory';
@@ -213,7 +247,17 @@ Future<void> _showMyDialog(
                                 .toList(),
                             onChanged: (String? newvalue) {
                               setState(() => sem = newvalue);
-                            })
+                            }),
+                        const SizedBox(height: 14),
+                        CustomTextField(
+                            title: 'KTU Registration ID',
+                            controller: _trvidcontroller),
+                        CustomTextField(
+                          title: 'Phone Number',
+                          controller: _phonecontroller,
+                          keyboardType: TextInputType.phone,
+                        ),
+                        const SizedBox(height: 4),
                       ],
                     ),
             ),
@@ -233,64 +277,28 @@ Future<void> _showMyDialog(
                             final fb = FirebaseDatabase.instance;
                             final database = fb.ref();
                             setState(() => isProcessing = true);
-                            final ktuids =
-                                (await database.child('ktuids').once())
-                                    .snapshot;
-                            if (ktuids.hasChild(
-                                _trvidcontroller.text.toLowerCase())) {
-                              final count = int.parse((ktuids
-                                      .child(
-                                          '${_trvidcontroller.text.toLowerCase()}/count')
-                                      .value)
-                                  .toString());
-                              if (count <= 4) {
-                                await database.child('soloevents/${product.route}').push().set({
-                                  'name': _nameController.text,
-                                  'dept': dept,
-                                  'trvid': _trvidcontroller.text.toLowerCase(),
-                                  'sem': sem,
-                                  'phone': _phonecontroller.text,
-                                  'email': _emailController.text
-                                }).whenComplete(() async {
-                                  await database
-                                      .child(
-                                          'ktuids/${_trvidcontroller.text.toLowerCase()}')
-                                      .update({'count': count + 1});
-                                  setState(() => indicator = submittedSuccessfully);
-                                  await Future.delayed(Duration(seconds: 1));
-                            
-                                  Navigator.of(context).pop();
-                                });
-                              } else {
-                                 setState(() => indicator = registeredThree);
-                                  Navigator.of(context).pop();
-                              }
-                            } else {
-                              await database
-                                  .child(
-                                      'ktuids/${_trvidcontroller.text.toLowerCase()}')
-                                  .set({'count': 1});
-                              await database.child('soloevents/${product.route}').push().set({
-                                  'name': _nameController.text,
-                                  'dept': dept,
-                                  'trvid': _trvidcontroller.text.toLowerCase(),
-                                  'sem': sem,
-                                  'phone': _phonecontroller.text,
-                                  'email': _emailController.text
-                                }).whenComplete(() async {
-                                  await database
-                                  .child(
-                                      'ktuids/${_trvidcontroller.text.toLowerCase()}')
-                                  .set({'count': 1});
-                                  setState(() => indicator = submittedSuccessfully);
-                                  await Future.delayed(Duration(seconds: 1));
-                            
-                                  Navigator.of(context).pop();
-                                });
-                            }
+
+                            await database
+                                .child('soloevents/${product.route}')
+                                .push()
+                                .set({
+                              'name': _nameController.text,
+                              'dept': dept,
+                              'trvid': _trvidcontroller.text.toLowerCase(),
+                              'sem': sem,
+                              'phone': _phonecontroller.text,
+                              'email': _emailController.text
+                            }).whenComplete(() async {
+                              setState(() => indicator = submittedSuccessfully);
+                              await Future.delayed(Duration(seconds: 1));
+
+                              Navigator.of(context).pop();
+                            });
                           } catch (e) {
+                            setState(() => indicator = errormsg);
+                            await Future.delayed(Duration(seconds: 1));
+
                             Navigator.of(context).pop();
-                            print('error');
                           }
                         }
                       },
@@ -301,4 +309,4 @@ Future<void> _showMyDialog(
       );
     },
   );
-  }
+}

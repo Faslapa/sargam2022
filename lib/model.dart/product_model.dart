@@ -53,7 +53,6 @@ List<Product> literaryevents = [
       title: "Cartooning",
       image: "assets/images/cartoon.jpeg",
       route: '/cartooning'),
-  Product(id: 8, title: "JAM", image: "assets/images/jam.jpeg", route: '/jam'),
 ];
 
 List<Product> groupMusicEvents = [
@@ -71,7 +70,7 @@ List<Product> groupMusicEvents = [
       id: 3,
       title: "Group Song",
       image: "assets/images/song.jpg",
-      route: '/Group Song'),
+      route: '/groupsong'),
 ];
 
 List<Product> groupDanceEvents = [
@@ -97,21 +96,16 @@ List<Product> groupDanceEvents = [
       route: '/mirrordance'),
   Product(
       id: 5,
-      title: "Dance Battle",
-      image: "assets/images/west_group.jpg",
-      route: '/dancebattle'),
-  Product(
-      id: 6,
       title: "Thiruvathira",
       image: "assets/images/trad_group.jpg",
-      route: '/tradgroup'),
+      route: '/thiruvathira'),
   Product(
-      id: 7,
+      id: 6,
       title: "Margam Kali",
       image: "assets/images/trad_group.jpg",
       route: '/margamkali'),
   Product(
-      id: 8,
+      id: 7,
       title: "Oppana",
       image: "assets/images/trad_group.jpg",
       route: '/oppana'),
@@ -139,11 +133,6 @@ List<Product> newlaunchevents = [
       image: "assets/images/madads.jpg",
       route: '/madads'),
   Product(
-      id: 5,
-      title: 'Wordsworth',
-      image: "assets/images/words.png",
-      route: '/wordsworth'),
-  Product(
       id: 6,
       title: 'Book Debate',
       image: "assets/images/book.jpeg",
@@ -157,14 +146,22 @@ List<Product> newlaunchevents = [
 
 List<Product> theatregroupevents = [
   Product(
-      id: 1, title: 'Mime', image: "assets/images/theatre.jpg", route: '/mime'),
+    id: 1,
+    title: 'Mime',
+    image: "assets/images/theatre.jpg",
+    route: '/mime',
+  ),
   Product(
       id: 1,
-      title: 'Tableu',
+      title: 'Tableau',
       image: "assets/images/theatre.jpg",
-      route: '/tableu'),
+      route: '/tableau'),
   Product(
-      id: 1, title: 'Skit', image: "assets/images/theatre.jpg", route: '/skit'),
+    id: 1,
+    title: 'Skit',
+    image: "assets/images/theatre.jpg",
+    route: '/skit',
+  ),
 ];
 
 List<Product> musicevents = [
@@ -179,80 +176,98 @@ List<Product> musicevents = [
       image: "assets/images/song.jpg",
       route: '/classicalfem'),
   Product(
-      id: 3,
-      title: "Percussion-Tabla",
-      image: "assets/images/tabla.jpg",
-      route: '/tabla'),
+    id: 3,
+    title: "Tabla",
+    image: "assets/images/tabla.jpg",
+    route: '/tabla',
+  ),
   Product(
       id: 4,
-      title: "Percussion-Mridangam",
+      title: "Mridangam",
       image: "assets/images/mridangam.jpg",
       route: '/mridangam'),
   Product(
-      id: 5,
-      title: "Percussion-Drums",
-      image: "assets/images/drums.jpg",
-      route: '/drums'),
+    id: 5,
+    title: "Drums",
+    image: "assets/images/drums.jpg",
+    route: '/drums',
+  ),
   Product(
       id: 6,
-      title: "Strings-Guitar",
+      title: "Guitar",
       image: "assets/images/guitar.jpg",
       route: '/guitar'),
   Product(
       id: 7,
-      title: "Strings-Violin",
+      title: "Violin",
       image: "assets/images/violin.jpg",
       route: '/violin'),
   Product(
-      id: 8,
-      title: "Strings-Veena",
-      image: "assets/images/veena.jpg",
-      route: '/veena'),
+    id: 8,
+    title: "Veena",
+    image: "assets/images/veena.jpg",
+    route: '/veena',
+  ),
   Product(
       id: 9,
-      title: "Strings-Keyboard",
+      title: "Keyboard",
       image: "assets/images/keyboard.jpg",
       route: '/keyboard'),
   Product(
       id: 10,
+      title: "Flute",
+      image: "assets/images/flute.jpg",
+      route: '/flute'),
+  Product(
+      id: 11,
       title: "Light music-male",
       image: "assets/images/song.jpg",
       route: '/lightmusicmale'),
   Product(
-      id: 11,
+      id: 12,
       title: "Light music-female",
       image: "assets/images/song.jpg",
       route: '/lightmusicfemale'),
   Product(
-      id: 12,
+      id: 13,
       title: "Western vocal solo",
       image: "assets/images/song.jpg",
       route: '/westernvocal'),
   Product(
-      id: 13,
+      id: 14,
       title: "Mappila Pattu",
       image: "assets/images/song.jpg",
       route: '/mappilapattu'),
   Product(
-      id: 14,
+      id: 15,
       title: "Solo Song",
       image: "assets/images/song.jpg",
       route: '/solosong'),
   Product(
-      id: 15,
+      id: 16,
       title: "Recitation Hindi",
       image: "assets/images/song.jpg",
       route: '/rechindi'),
   Product(
-      id: 16,
+      id: 17,
       title: "Recitation English",
       image: "assets/images/song.jpg",
       route: '/receng'),
   Product(
-      id: 17,
+      id: 18,
       title: "Recitation Malayalam",
       image: "assets/images/song.jpg",
-      route: '/recmal')
+      route: '/recmal'),
+  Product(
+      id: 19,
+      title: "Malayalam Rap",
+      image: "assets/images/song.jpg",
+      route: '/rapmal'),
+  Product(
+      id: 20,
+      title: "English Rap",
+      image: "assets/images/song.jpg",
+      route: '/rapeng')
 ];
 
 List<Product> theatreevents = [
@@ -328,19 +343,23 @@ List<Product> danceevents = [
       image: "assets/images/dance.jpg",
       route: '/bharathanatyam'),
   Product(
-    id: 2,
-    title: "Folk Dance",
-    image: "assets/images/folk.jpg",
-    route: '/folk'
-  ),
-  Product(
-      id: 3,
+      id: 2,
       title: "Kuchipudi",
       image: "assets/images/dance.jpg",
       route: '/kuchipudi'),
   Product(
-      id: 4,
+      id: 3,
       title: "Mohiniyattam",
       image: "assets/images/dance.jpg",
       route: '/mohiniyattam'),
+  Product(
+      id: 4,
+      title: "Solo Dance",
+      image: "assets/images/solodance.jpg",
+      route: '/solodance'),
+  Product(
+      id: 5,
+      title: "Folk Dance",
+      image: "assets/images/folk.jpg",
+      route: '/folk'),
 ];

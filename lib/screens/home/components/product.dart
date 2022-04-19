@@ -9,9 +9,11 @@ class Products extends StatelessWidget {
     Key? key,
     required this.product,
     required this.press,
+    required this.icon,
   }) : super(key: key);
   final Product product;
   final VoidCallback press;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -29,32 +31,28 @@ class Products extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    product.image, fit: BoxFit.fill,
-                  ),
-                ),
-                
+                    borderRadius: BorderRadius.circular(15),
+                    child: FittedBox(
+                      child: Icon(
+                        icon,
+                        size: 200,
+                        color: Color.fromARGB(255, 4, 48, 85),
+                      ),
+                    )),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: AutoSizeText(
-                    
                     product.title,
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     minFontSize: 12,
                     style: TextStyle(
-                      fontSize: 25, color:Color.fromARGB(226, 3, 2, 48),fontWeight: FontWeight.bold
-                    ),
-                    
-                    
-                    
-                  
+                        fontSize: 15,
+                        color: Color.fromARGB(226, 3, 2, 48),
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-              
               ],
-              
             ),
           ),
         ),
